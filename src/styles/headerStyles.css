@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'poke-hollow';
+  src: url('../assets/fonts/Pokemon-Hollow.ttf');
+}
+
+@font-face {
+  font-family: 'poke-solid';
+  src: url('../assets/fonts/Pokemon-Solid.ttf');
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #F0ECE3;
+}
+
+.logo {
+  margin-left: 3%;
+  color: rgb(233, 233, 1);
+  text-shadow: 3px 0px 0px rgb(0, 0, 211);
+  letter-spacing: 10px;
+  font-family: 'poke-solid';
+}
