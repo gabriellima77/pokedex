@@ -21,15 +21,13 @@ export default class Panel extends Component {
   }
 
   setPokemon = async ()=> {
-    const { pokePromise } = this.props;
-    pokePromise.then((pokemon)=> {
-      const type = pokemon.types[0].type.name;
-      const color = this.getColor(type);
-      this.setState({
-        pokemon,
-        color: color,
-      })
-    });
+    const { pokemon } = this.props;
+    const type = pokemon.types[0].type.name;
+    const color = this.getColor(type);
+    this.setState({
+      pokemon,
+      color: color,
+    })
   }
 
   getPanel = ()=> {

@@ -6,24 +6,11 @@ import Panel from './Panel';
 export default class Main extends Component {
   constructor(props){
     super(props);
-
-    this.state = {
-      list: [],
-      isLoading: true,
-      pokemon: ''
-    }
+    this.putInfoPokemon = this.putInfoPokemon.bind(this);
   }
 
-  returnHandler = ()=> {
-    this.setState({
-      pokemon: '',
-    });
-  }
-
-  putInfoPokemon = (promise)=> {
-    this.setState({
-      pokemon: promise,
-    });
+  putInfoPokemon(promise){
+    this.props.setPokemon(promise);
   }
 
   getPokemons = async (data)=> {
@@ -32,35 +19,32 @@ export default class Main extends Component {
       const pokemon = await response.json();
       return pokemon;
     });
-    return pokemons;
+    return Promise.all([...pokemons]);
   }
 
   getData = async (page)=> {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${151}&offset=${page}`, {mode: 'cors'});
     const data = await response.json();
     const pokemons = await this.getPokemons(data);
-    this.setState({
-      list: [...pokemons],
-      isLoading: !this.state.isLoading
-    });
+    this.props.setData([...pokemons]);
   }
 
   componentDidMount(){
-    if(this.state.list.length <= 0) this.getData();
+    if(this.props.list.length <= 0) this.getData();
   }
 
   render() {
-    const { list, isLoading, pokemon } = this.state;
+    const { list, isLoading, pokemon } = this.props;
     return(
       <main className={`main ${(pokemon)? 'not-grid': ''}`}>
         <div className="loading" style={(isLoading)?{display: 'block'}:{display: 'none'}}></div>
         {(!pokemon)
-          ? list.map((promise, i)=> <Card
+          ? list.map((pokemon)=> <Card
               putInfoPokemon={this.putInfoPokemon}
-              key={i}
-              promise={promise}
+              key={pokemon.id}
+              pokemon={pokemon}
             />)
-          : <Panel pokePromise={pokemon} returnHandler={this.returnHandler}/>
+          : <Panel pokemon={pokemon} returnHandler={this.props.returnHandler}/>
         }
       </main>
     );

@@ -22,36 +22,34 @@ export default class Card extends Component {
     return color;
   }
 
-  setData = async (promise)=> {
-    promise.then((pokemon)=>{
-      this.setState({
-        data: pokemon,
-        types: pokemon.types,
-        id: pokemon.id,
-        name: pokemon.name,
-      });
-      const type = pokemon.types[0].type.name;
-      const color = this.getColor(type)[type];
-      const sprite = pokemon.sprites.other.dream_world.front_default;
+  setData = async (pokemon)=> {
+    this.setState({
+      data: pokemon,
+      types: pokemon.types,
+      id: pokemon.id,
+      name: pokemon.name,
+    });
+    const type = pokemon.types[0].type.name;
+    const color = this.getColor(type)[type];
+    const sprite = pokemon.sprites.other.dream_world.front_default;
 
-      this.setState({
-        color,
-        imgUrl: sprite
-      });
+    this.setState({
+      color,
+      imgUrl: sprite
     });
   }
 
   componentDidMount(){
-    const { promise } = this.props; 
-    if(!this.state.data) this.setData(promise);
+    const { pokemon } = this.props; 
+    if(!this.state.data) this.setData(pokemon);
   }
 
   render(){
     const { color, id, imgUrl, types, name } = this.state;
-    const { putInfoPokemon, promise } = this.props;
+    const { putInfoPokemon, pokemon } = this.props;
     return (
       <div
-        onClick={()=>{putInfoPokemon(promise)}}
+        onClick={()=>{putInfoPokemon(pokemon)}}
         className="card"
         style={{backgroundColor: color}}
       >
