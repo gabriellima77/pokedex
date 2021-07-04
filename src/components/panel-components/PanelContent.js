@@ -72,8 +72,8 @@ export default class PanelContente extends Component {
           <p className="text">{about.weight/10} Kg</p>
         </div>
         <div className="content-box">
-          <p className="title">Weight:</p>
-          <p className="text">{about.abilities.map((ability)=> ability.ability.name).join(', ')}</p>
+          <p className="title">Abilities:</p>
+          <p className="text">[ {about.abilities.map((ability)=> ability.ability.name).join(', ')} ]</p>
         </div>
       </div>
     );
