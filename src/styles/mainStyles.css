@@ -93,6 +93,11 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .main.not-grid {
+    width: 100%;
+
+  }
+
   .card {
     width: 40vw;
     height: 40vw;

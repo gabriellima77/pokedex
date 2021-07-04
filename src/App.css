@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 .App {
   display: flex;
   flex-direction: column;
@@ -6,4 +8,5 @@
   height: 100%;
   min-height: 100vh;
   background-color: rgb(221, 221, 221);
+  font-family: 'Lato', sans-serif;
 }

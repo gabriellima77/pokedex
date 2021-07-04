@@ -1,6 +1,6 @@
 .panel {
   border-radius: 10px;
-  margin: auto;
+  margin: 0;
   width: 70%;
   background-color: rgb(129, 53, 53);
 }
@@ -136,6 +136,10 @@
 @media (max-width: 768px) {
   .large-name {
     font-size: 36px;
+  }
+
+  .panel {
+    width: 90%;
   }
 
   .box .type {
