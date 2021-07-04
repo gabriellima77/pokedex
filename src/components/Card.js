@@ -32,7 +32,7 @@ export default class Card extends Component {
       });
       const type = pokemon.types[0].type.name;
       const color = this.getColor(type)[type];
-      const sprite = pokemon.sprites['front_default'];
+      const sprite = pokemon.sprites.other.dream_world.front_default;
 
       this.setState({
         color,

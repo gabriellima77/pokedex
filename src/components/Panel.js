@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import json from '../assets/colors.json';
 import '../styles/statusStyles.css';
+import PanelContente from './panel-components/PanelContent';
 import PanelHeader from './panel-components/PanelHeader';
 
 export default class Panel extends Component {
@@ -40,8 +41,9 @@ export default class Panel extends Component {
         <img
           alt={pokemon.name}
           className="large-sprite" 
-          src={pokemon.sprites.front_default} 
+          src={pokemon.sprites.other.dream_world.front_default} 
         />
+        <PanelContente pokemon={pokemon} />
       </div>
     );
   }
