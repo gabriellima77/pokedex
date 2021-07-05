@@ -28,7 +28,7 @@ class App extends Component {
   filterHandler = (str)=> {
     if(str){
       this.setState((prev)=> ({
-        filteredList: prev.list.filter((pokemon)=> (pokemon.name.includes(str)))
+        filteredList: prev.list.filter((pokemon)=> (pokemon.name.includes(str.toLowerCase())))
       }));
     } else {
       this.setState({
