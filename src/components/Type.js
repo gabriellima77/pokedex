@@ -5,7 +5,7 @@ const Type = ({ types })=> {
     <div className="types">
       {(types)
         ? types.map((obj, i)=> <span key={i} className="type">{obj.type.name}</span>)
-        :null
+        : null
       }
     </div>
   );

@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import { Component } from 'react';
+import Footer from './components/Footer';
 
 class App extends Component {
 
@@ -80,6 +81,7 @@ class App extends Component {
           setPokemon={this.setPokemon}
           returnHandler={this.returnHandler}
         />
+        <Footer />
       </div>
     );
   }

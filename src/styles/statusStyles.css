@@ -128,9 +128,33 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: rgb(77, 77, 77);
   margin: 0;
-  margin-left: 10%;
+  width: 30%;
+}
+
+.meter { 
+  margin-left: 10px;
+  width: 70%;
+  height: 5px;
+  position: relative;
+  padding: 10px;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgb(43,194,83);
+  position: relative;
+  overflow: hidden;
+}
+
+.space {
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {

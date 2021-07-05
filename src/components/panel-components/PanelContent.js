@@ -38,19 +38,34 @@ export default class PanelContente extends Component {
   }
 
   baseHandler = ()=> {
+    const { stats } = this.props.pokemon;
+    const hasTotal = stats.find((stat)=> (stat.stat.name === 'total'));
+    if(!hasTotal){
+      let obj = {
+        stat: {
+          name: 'total'
+        },
+        base_stat: 0
+      }
+      stats.forEach((stat)=> {
+        obj.base_stat += stat.base_stat;
+      });
+      stats.push(obj);
+    }
     this.setState({
       active: [false, true, false],
       about: '',
       moves: '',
-      base: '',
+      base: stats,
     });
   }
   
   movesHandler = ()=> {
+    const { moves } = this.props.pokemon;
     this.setState({
       active: [false, false, true],
       about: '',
-      moves: '',
+      moves,
       base: '',
     });
   }
@@ -79,17 +94,56 @@ export default class PanelContente extends Component {
     );
   }
 
+  getPercent = (value)=> {
+    let percent = (value/255)* 100;
+    if(percent > 100) percent = 100;
+    return percent;
+  }
+
+  getBaseStats = ()=> {
+    const { base } = this.state;
+    return (
+      <div className="content">
+        {base.map((stats, i)=> (
+          <div key={i} className="content-box">
+            <p className="title">{stats.stat.name}:</p>
+            <div className="text">
+              <p>{stats.base_stat}</p>
+              <div className="meter">
+                <span style={{width: `${this.getPercent(stats.base_stat)}%`}} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  getMoves = ()=> {
+    const { moves } = this.state;
+    return (
+      <div className="content">
+        {moves.map((move, i)=> (
+          <div key={i} className="content-box">
+          <p className="title">{move.move.name}:</p>
+          <div className="text">
+            <p className="space">[ Level: {move.version_group_details[0].level_learned_at},</p>
+            <p>Method: {move.version_group_details[0].move_learn_method.name} ]</p>
+          </div>
+          </div>
+          )
+        )}
+      </div>
+    );
+  }
+
   putContent = ()=> {
     const { about, base, moves } = this.state;
 
     if(about) return this.getAbout();
-    else if(base) return this.getBase();
+    else if(base) return this.getBaseStats();
     else if(moves) return this.getMoves();
     return null;
-  }
-
-  componentDidMount() {
-    console.log(this.props.pokemon);
   }
 
   render() {
