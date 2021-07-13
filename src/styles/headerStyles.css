@@ -10,12 +10,14 @@
 
 .header {
   display: flex;
+  align-items: center;
   width: 100%;
   height: 70px;
   background-color: #F0ECE3;
 }
 
 .logo {
+  margin: 0;
   margin-left: 3%;
   color: rgb(233, 233, 1);
   text-shadow: 3px 0px 0px rgb(0, 0, 211);
