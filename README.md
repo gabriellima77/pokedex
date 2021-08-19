@@ -19,6 +19,15 @@ Desktop|Mobile
 If you want to give it a try click the link below: </br>
 [Live Demo](https://gabriellima77.github.io/pokedex/)
 
+## Getting started
+If you want to use this app locally or make your own changes, follow the steps below: </br>
+```
+git clone git@github.com:gabriellima77/pokedex.git
+cd pokedex
+npm install
+npm start
+```
+
 ## Built with
 - [React](https://reactjs.org/)
 - [PokeAPI](https://pokeapi.co/)
